@@ -1,0 +1,64 @@
+Executive Summary Report
+=========================
+Invoice   Customer                                          Salesperson                      Subtotal        Fees       Taxes       Total
+INV001    Lincoln Industries                                Sherman, P                    $    510.00 $      0.00 $     21.68 $    531.68
+INV002    ACME Corperation                                  Sherman, P                    $   5000.00 $    125.00 $      0.00 $   5125.00
+INV003    Smurfs Inc.                                       Lauften, Lauren               $   4803.29 $    475.00 $      0.00 $   5278.29
+=========================================================================================================================================
+TOTALS                                                                                    $  10313.29 $    600.00 $     21.68 $  10934.96
+
+
+
+
+Individual Invoice Detail Reports
+==================================================
+Invoice INV001
+========================
+Salesperson: Sherman, P
+Customer Info:
+ Lincoln Industries (C001)
+ Man, Super
+ 600 W E St
+ Lincoln NE 68522 USA
+-------------------------------------------
+Code        Item                                                                           Fees       Total
+f2187       Storm Trooper (17.00 hrs @ $30.00/hr)                                   $      0.00 $    510.00
+                                                                                    ========================
+SUB-TOTALS                                                                          $      0.00 $    510.00
+COMPLIANCE FEE                                                                                  $      0.00
+TAXES                                                                                           $     21.68
+TOTAL                                                                                           $    531.68
+
+Invoice INV002
+========================
+Salesperson: Sherman, P
+Customer Info:
+ ACME Corperation (C002)
+ Vador, Darth
+ 6852 Looney Toons Lane
+ Los Angeles CA 92345 USA
+-------------------------------------------
+Code        Item                                                                           Fees       Total
+bb8         Ball Droid (2 units @ $2500.00/unit)                                    $      0.00 $   5000.00
+                                                                                    ========================
+SUB-TOTALS                                                                          $    125.00 $   5000.00
+COMPLIANCE FEE                                                                                  $    125.00
+TAXES                                                                                           $      0.00
+TOTAL                                                                                           $   5125.00
+
+Invoice INV003
+========================
+Salesperson: Lauften, Lauren
+Customer Info:
+ Smurfs Inc. (C003)
+ Hawkings, Steven
+ 99999 Rocky Way
+ The Rock Central The Rock 88888 Mars
+-------------------------------------------
+Code        Item                                                                           Fees       Total
+C3p0        Awkward AI (1461 days @ $1200.00/yr)                                    $    350.00 $   4803.29
+                                                                                    ========================
+SUB-TOTALS                                                                          $    475.00 $   4803.29
+COMPLIANCE FEE                                                                                  $    125.00
+TAXES                                                                                           $      0.00
+TOTAL                                                                                           $   5278.29

@@ -1,0 +1,85 @@
+<customers>
+<companyCustomer>
+  <customerCode>C001</customerCode>
+  <name>Lincoln Industries</name>
+  <address>
+    <street>600 W E St</street>
+    <city>Lincoln</city>
+    <state>NE</state>
+    <zip>68522</zip>
+    <country>USA</country>
+  </address>
+  <primaryContact>
+    <personCode>123</personCode>
+    <firstName>Super</firstName>
+    <lastName>Man</lastName>
+    <address>
+      <street>222 Dailey news</street>
+      <city>New York</city>
+      <state>NY</state>
+      <zip>zipcode</zip>
+      <country>United States</country>
+    </address>
+    <emails>
+      <string>TotesRealSprMn@savedaworld.com</string>
+      <string>Clarkkent@whatever.com</string>
+    </emails>
+  </primaryContact>
+  <type>C</type>
+</companyCustomer>
+<governmentCustomer>
+  <customerCode>C002</customerCode>
+  <name>ACME Corperation</name>
+  <address>
+    <street>6852 Looney Toons Lane</street>
+    <city>Los Angeles</city>
+    <state>CA</state>
+    <zip>92345</zip>
+    <country>USA</country>
+  </address>
+  <primaryContact>
+    <personCode>122</personCode>
+    <firstName>Darth</firstName>
+    <lastName>Vador</lastName>
+    <address>
+      <street>tempel city</street>
+      <city>Star Destroyer Base</city>
+      <state>FL</state>
+      <zip></zip>
+      <country>Mexico</country>
+    </address>
+    <emails>
+      <string>notAnikan@force.com</string>
+    </emails>
+  </primaryContact>
+  <type>G</type>
+</governmentCustomer>
+<governmentCustomer>
+  <customerCode>C003</customerCode>
+  <name>Smurfs Inc.</name>
+  <address>
+    <street>99999 Rocky Way</street>
+    <city>The Rock Central</city>
+    <state>The Rock</state>
+    <zip>88888</zip>
+    <country>Mars</country>
+  </address>
+  <primaryContact>
+    <personCode>333</personCode>
+    <firstName>Steven</firstName>
+    <lastName>Hawkings</lastName>
+    <address>
+      <street>555 Robo St.</street>
+      <city>Seattle</city>
+      <state></state>
+      <zip>7987987</zip>
+      <country>Mexico</country>
+    </address>
+    <emails>
+      <string>SteevHawks@Physics4eva.edu</string>
+      <string>roboRock@nerd.com</string>
+    </emails>
+  </primaryContact>
+  <type>G</type>
+</governmentCustomer>
+</customers>

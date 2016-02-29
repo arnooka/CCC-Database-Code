@@ -1,0 +1,110 @@
+{
+"persons": [
+	{
+  "personCode": "123",
+  "firstName": "Super",
+  "lastName": "Man",
+  "address": {
+    "street": "222 Dailey news",
+    "city": "New York",
+    "state": "NY",
+    "zip": "zipcode",
+    "country": "United States"
+  },
+  "emails": [
+    "TotesRealSprMn@savedaworld.com",
+    "Clarkkent@whatever.com"
+  ]
+},
+	{
+  "personCode": "122",
+  "firstName": "Darth",
+  "lastName": "Vador",
+  "address": {
+    "street": "tempel city",
+    "city": "Star Destroyer Base",
+    "state": "FL",
+    "zip": "",
+    "country": "Mexico"
+  },
+  "emails": [
+    "notAnikan@force.com"
+  ]
+},
+	{
+  "personCode": "111",
+  "firstName": "David",
+  "lastName": "Tennant",
+  "address": {
+    "street": "888 Tardis Dr",
+    "city": "London",
+    "state": "",
+    "zip": "60611",
+    "country": "England"
+  },
+  "emails": [
+    "TheDoc@real.com"
+  ]
+},
+	{
+  "personCode": "222",
+  "firstName": "H",
+  "lastName": "Simpson",
+  "address": {
+    "street": "1234 Yello Dr.",
+    "city": "Springfield",
+    "state": "AN",
+    "zip": "",
+    "country": "Canada"
+  },
+  "emails": [
+    "blablabla@bla.bla"
+  ]
+},
+	{
+  "personCode": "333",
+  "firstName": "Steven",
+  "lastName": "Hawkings",
+  "address": {
+    "street": "555 Robo St.",
+    "city": "Seattle",
+    "state": "",
+    "zip": "7987987",
+    "country": "Mexico"
+  },
+  "emails": [
+    "SteevHawks@Physics4eva.edu",
+    "roboRock@nerd.com"
+  ]
+},
+	{
+  "personCode": "S001",
+  "firstName": "Lauren",
+  "lastName": "Lauften",
+  "address": {
+    "street": "2438 N 32nd St.",
+    "city": "Buffalo",
+    "state": "NY",
+    "zip": "78643",
+    "country": "United States"
+  },
+  "emails": [
+    "llauften@Yahoo.com"
+  ]
+},
+	{
+  "personCode": "S002",
+  "firstName": "P",
+  "lastName": "Sherman",
+  "address": {
+    "street": "42 Wallaby Way",
+    "city": "Sydney",
+    "state": "New South Wales",
+    "zip": "In a land down unda\u0027",
+    "country": "Australia"
+  },
+  "emails": [
+    "pbshiredme@pls.com"
+  ]
+}
+]}
