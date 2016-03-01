@@ -12,6 +12,6 @@ public class CCCDatabase {
 		
 		JsonXmlFactory.toXMLandJSON();
 		
-		Invoice.Invoices();
+		InvoiceParser.Invoices();
 	}
 }
