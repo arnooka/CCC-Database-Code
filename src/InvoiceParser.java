@@ -113,6 +113,9 @@ public class InvoiceParser {
 								bool = false;
 							}
 						}
+						if(customer.get(customerCode).getType().equals("C") && product.get(p[k]).getType().equals("C")){
+							fees+=150;
+						}
 						fees += fee;
 						
 						//Calculate the invoice Subtotals and ending Totals
@@ -142,8 +145,15 @@ public class InvoiceParser {
 									person, p[k], personCode, invoiceProducts));
 							
 							//Check for what to send to the constructor
+						if(person.get(personCode) == null){
+							@SuppressWarnings("unused")
+							Invoice invoice1 = new Invoice(invoiceID, customer.get(customerCode).getName(),
+									"null", invoiceProducts);
+						}else{
+							@SuppressWarnings("unused")
 							Invoice invoice1 = new Invoice(invoiceID, customer.get(customerCode).getName(),
 									person.get(personCode).getLastName()+", "+person.get(personCode).getFirstName(), invoiceProducts);
+						}
 						}
 					}
 				}
@@ -153,10 +163,17 @@ public class InvoiceParser {
 			grandFees += fees;
 			grandTaxes += taxes;
 			grandTotal += endTotal;
+			
 			//Print out each Executive Summary invoice
-			System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
-					 invoiceID, customer.get(customerCode).getName(), person.get(personCode).getLastName()+", "+
-					person.get(personCode).getFirstName(), subtotal, fees, taxes, endTotal);
+			if(person.get(personCode) == null){
+				System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
+						 invoiceID, customer.get(customerCode).getName(), "null", subtotal, fees, taxes, endTotal);
+			}else{
+				System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
+						 invoiceID, customer.get(customerCode).getName(), person.get(personCode).getLastName()+", "+
+						person.get(personCode).getFirstName(), subtotal, fees, taxes, endTotal);
+			}
+			
 		}
 		//Print the remaining details for the Executive Report
 		System.out.println("===================================================================="
@@ -189,6 +206,11 @@ public class InvoiceParser {
 			String s = null;
 			double fee = 0;
 			total = 0;
+			
+			//Consultation Service Fee
+			if(customer.get(customerCode).getType().equals("C") && product.get(productCode).getType().equals("C")){
+				fee+=150;
+			}
 			
 			//Get the costs of each items respective type
 			if(product.get(invoiceProducts.get(i)).getType().equals("C")){
@@ -247,8 +269,13 @@ public class InvoiceParser {
 		
 		String one = "Invoice " + invoiceID+"\n";
 		String two = "========================\n";
-		String three = "Salesperson: " +person.get(personCode).getLastName()+", "+
-						person.get(personCode).getFirstName()+"\n";
+		String three = null;
+		if(person.get(personCode) == null){
+			three = "Salesperson: null\n";
+		}else{
+			three = "Salesperson: " +person.get(personCode).getLastName()+", "+
+					person.get(personCode).getFirstName()+"\n";
+		}
 		String four = "Customer Info:\n";
 		String five = "-------------------------------------------\n";
 		String six = String.format("%-11s %-78s %-10s %s\n", "Code", "Item", "Fees", "Total");
