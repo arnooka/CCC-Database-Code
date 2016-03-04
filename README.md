@@ -1,7 +1,8 @@
 # CCC-Database-Code
 	CSCE 156H Database Structures and Code
 ###Phase 1:
-	Generate outputs in both XML and JSON from 3 data files: Products.dat, Customers.dat, Persons.dat
+	Generate outputs in both XML and JSON from 3 data files:
+		1)Products.dat, 2)Customers.dat, 3)Persons.dat
 ###Phase 2:
 	Generate standard output from the invoice database system by implementing data from the Invoices.dat file
 ###Phase 3:
