@@ -1,0 +1,36 @@
+Invoice{
+	Customer{
+		Customer Code
+		Name
+		Address
+		//Person
+	}	
+	Product/Service{
+		Product Code
+		Name
+		Equipment{
+			Price per Unit
+		}
+		Consultations{
+			//Person
+			Price per Hour
+		}
+		Licenses{
+			Fee
+			Annual Cost
+		}
+	}
+	Person{
+		Person Code
+		First Name
+		Last Name
+		Address{
+			Street
+			City
+			State
+			Zipcode
+			Country
+		}
+		Email
+	}
+}

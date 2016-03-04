@@ -1,0 +1,34 @@
+{
+"products": [
+  {
+    "consultant": {
+      "personCode": "111",
+      "firstName": "David",
+      "lastName": "Tennant",
+      "address": {
+        "street": "888 Tardis Dr",
+        "city": "London",
+        "state": "",
+        "zip": "60611",
+        "country": "England"
+      },
+      "emails": [
+      "TheDoc@real.com"
+      ]
+    },
+    "pricePerHour": 30.0,
+    "productCode": "f2187",
+    "name": "Storm Trooper"
+  },
+   {
+    "pricePerUnit": 2500.0,
+    "productCode": "bb8",
+    "name": "bb8"
+  }, 
+   {
+    "fee": 350.0,
+    "annualCost": 12000.0,
+    "productCode": "c3po",
+    "name": "Awkward Ai"
+  }
+]}

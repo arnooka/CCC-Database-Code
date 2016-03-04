@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<products>
+<consultation>
+	<productCode>f2187</productCode>
+	<name>Storm Trooper</name>
+	<consultant>
+		<personCode>111</personCode>
+		<firstName>David</firstName>
+		<lastName>Tennant</lastName>
+		<address>
+			<street>888 Tardis Dr</street>
+			<city>London</city>
+			<state></state>
+			<zip>60611</zip>
+			<country>England</country>
+		</address>
+		<emails>TheDoc@real.com</emails>
+	</consultant>
+	<pricePerHour>30</pricePerHour>
+</consultation>
+<equipment>
+	<productCode>bb8</productCode>
+	<name>bb8</name>
+	<pricePerUnit>2500</pricePerUnit>
+</equipment>
+<license>
+	<productCode>c3po</productCode>
+	<name>Awkward Ai</name>
+	<fee>350</fee>
+	<annualCost>12000</annualCost>
+</license>
+</products>
