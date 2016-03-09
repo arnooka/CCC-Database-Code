@@ -81,6 +81,7 @@ public class InvoiceParser {
 					int endMonth = Integer.parseInt(Month2);
 					int endDay = Integer.parseInt(Day2);
 			
+					//Add to its own method in Licenses
 					DateTime startDate = new DateTime(startYear, startMonth, startDay, 0, 0);
 					DateTime endDate = new DateTime(endYear, endMonth, endDay, 0, 0);
 					double days = Days.daysBetween(startDate, endDate).getDays();
@@ -113,7 +114,8 @@ public class InvoiceParser {
 								bool = false;
 							}
 						}
-						if(customer.get(customerCode).getType().equals("C") && product.get(p[k]).getType().equals("C")){
+						//Consultation fee
+						if(product.get(p[k]).getType().equals("C")){
 							fees+=150;
 						}
 						fees += fee;
@@ -145,15 +147,15 @@ public class InvoiceParser {
 									person, p[k], personCode, invoiceProducts));
 							
 							//Check for what to send to the constructor
-						if(person.get(personCode) == null){
-							@SuppressWarnings("unused")
-							Invoice invoice1 = new Invoice(invoiceID, customer.get(customerCode).getName(),
-									"null", invoiceProducts);
-						}else{
-							@SuppressWarnings("unused")
-							Invoice invoice1 = new Invoice(invoiceID, customer.get(customerCode).getName(),
-									person.get(personCode).getLastName()+", "+person.get(personCode).getFirstName(), invoiceProducts);
-						}
+							if(person.get(personCode) == null){
+								@SuppressWarnings("unused")
+								Invoice invoice1 = new Invoice(invoiceID, customer.get(customerCode).getName(),
+										"null", invoiceProducts);
+							}else{
+								@SuppressWarnings("unused")
+								Invoice invoice1 = new Invoice(invoiceID, customer.get(customerCode).getName(),
+										person.get(personCode).getLastName()+", "+person.get(personCode).getFirstName(), invoiceProducts);
+							}
 						}
 					}
 				}
@@ -207,10 +209,6 @@ public class InvoiceParser {
 			double fee = 0;
 			total = 0;
 			
-			//Consultation Service Fee
-			if(customer.get(customerCode).getType().equals("C") && product.get(productCode).getType().equals("C")){
-				fee+=150;
-			}
 			
 			//Get the costs of each items respective type
 			if(product.get(invoiceProducts.get(i)).getType().equals("C")){
@@ -221,13 +219,14 @@ public class InvoiceParser {
 				annual = ((License) product.get(invoiceProducts.get(i))).getAnnualCost();
 				fee = ((License) product.get(invoiceProducts.get(i))).getFee();
 			}
-			totalFee += fee;
 			
 			//String b formats the product's name and its rates
 			if(product.get(invoiceProducts.get(i)).getType().equals("C")){
 				
 				total = productMultiplyer.get(invoiceProducts.get(i))*h;
 				subtotal += total;
+				//Consultation Service Fee
+				fee=150;
 				String b = String.format("%s (%.2f hrs @ $%.2f/hr)", product.get(invoiceProducts.get(i)).getName(),
 						productMultiplyer.get(invoiceProducts.get(i)), h);
 				s = String.format("%-11s %-71s $%10.2f $%10.2f\n", invoiceProducts.get(i), b, fee, total);
@@ -249,6 +248,8 @@ public class InvoiceParser {
 				s = String.format("%-11s %-71s $%10.2f $%10.2f\n", invoiceProducts.get(i), b, fee, total);
 				products.add(s);
 			}
+			totalFee += fee;
+			
 			//Calculates tax percentage for a customer type
 			if(customer.get(customerCode).getType().equals("C") && 
 					(product.get(invoiceProducts.get(i)).getType().equals("C") || product.get(invoiceProducts.get(i)).getType().equals("L")) ){
