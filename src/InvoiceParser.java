@@ -286,7 +286,7 @@ public class InvoiceParser {
 		String ten = String.format("%-95s $%10.2f\n", "TAXES", taxes);
 		String eleven = String.format("%-95s $%10.2f\n", "TOTAL", grandTotal);
 		
-		//customer.get(customerCode).toString() hodls the formatted customer information
+		//customer.get(customerCode).toString() holds the formatted customer information
 		String invoice = one+two+three+four+customer.get(customerCode).toString()+five+six+a+seven+eight+nine+ten+eleven;
 		return invoice;
 	}
