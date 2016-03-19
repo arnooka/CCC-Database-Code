@@ -10,7 +10,7 @@ public class CCCDatabase {
 
 	public static void main(String args[]) throws FileNotFoundException{
 		
-		JsonXmlFactory.toXMLandJSON();
+		JsonXmlParser.toXMLandJSON();
 		
 		InvoiceParser.Invoices();
 	}

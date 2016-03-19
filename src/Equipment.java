@@ -9,11 +9,6 @@ public class Equipment extends Product {
 		this.pricePerUnit = pricePerUnit;
 	
 	}
-	//public Equipment(String productCode, String productName, Double pricePerUnit, String type){
-	//	super(productCode, productName);
-	//	this.pricePerUnit = pricePerUnit;
-	//	this.numUnits = numUnits;
-	//}
 
 	public Double getPricePerUnit() {
 		return pricePerUnit;

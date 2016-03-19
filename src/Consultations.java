@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Consultations extends Product{
 
 		private Persons consultant;
@@ -10,6 +12,14 @@ public class Consultations extends Product{
 			this.pricePerHour = pricePerHour;
 		}
 
+		public static double consultationFee(HashMap<String, Product> product, String productCode){
+			double fees = 0;
+			if(product.get(productCode).getType().equals("C")){
+				fees+=150;
+			}
+			return fees;
+		}
+		
 		public Persons getConsultant() {
 			return consultant;
 		}
