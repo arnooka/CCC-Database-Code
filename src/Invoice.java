@@ -68,9 +68,9 @@ public class Invoice {
 			totalFee += fee;
 			
 			//Calculates tax percentage for a customer type
-			taxes += companyCustomer.taxes(customer, product, customerCode, code, total);
+			taxes += Math.round(companyCustomer.taxes(customer, product, customerCode, code, total)*100);
 		}
-		double grandTotal = subtotal+totalFee+compFee+taxes;
+		double grandTotal = Math.round((subtotal+totalFee+compFee+(taxes/100))*100);
 		
 		//Create strings segments and concatinate
 		String a = "Invoice " + invoiceID+"\n";
@@ -87,7 +87,7 @@ public class Invoice {
 		String e = customer.get(customerCode).toString();
 		String f = "-------------------------------------------\n";
 		String g = String.format("%-11s %-78s %-10s %s\n", "Code", "Item", "Fees", "Total");
-		//Create the string of the requested products from the products ArrayList
+		//Create the string of all requested products from the products ArrayList
 		String h = "";
 		for(int j = 0; j<products.size(); j++){
 			h = h+products.get(j);
@@ -95,8 +95,8 @@ public class Invoice {
 		String i = String.format("%108s\n", "========================");
 		String j = String.format("%-83s $%10.2f $%10.2f\n", "SUB-TOTALS", totalFee, subtotal);
 		String k = String.format("%-95s $%10.2f\n", "COMPLIANCE FEE", compFee);
-		String l = String.format("%-95s $%10.2f\n", "TAXES", taxes);
-		String m = String.format("%-95s $%10.2f\n", "TOTAL", grandTotal);
+		String l = String.format("%-95s $%10.2f\n", "TAXES", taxes/100);
+		String m = String.format("%-95s $%10.2f\n", "TOTAL", grandTotal/100);
 		
 		//customer.get(customerCode).toString() holds the formatted customer information
 		String invoice = a+b+c+d+e+f+g+h+i+j+k+l+m;

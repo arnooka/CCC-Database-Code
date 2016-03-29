@@ -4,26 +4,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-
 public class InvoiceParser {
 
 	public static void Invoices() throws FileNotFoundException {
 		
+		//Get HashMaps that map to Customer, Product, and Person objects
+		HashMap<String, Customer> customer = JsonXmlParser.getCustomerCode1();
+		HashMap<String, Product> product = JsonXmlParser.getProductCode1();
+		HashMap<String, Persons> person = JsonXmlParser.getPersonCode1();
+		
 		Scanner invoice = new Scanner(new File("data/Invoices.dat"));
 		
-		//Print precursor information for the executive invoice
+		//Print precursor information for executive invoices
 		System.out.printf("Executive Summary Report\n=========================\n");
-		System.out.printf("%-9s %-49s %-32s %-15s %-10s %-11s %s\n", "Invoice", "Customer", "Salesperson",
-																 "Subtotal", "Fees", "Taxes", "Total");
+		System.out.printf("%-9s %-49s %-32s %-15s %-10s %-11s %s\n", 
+						  "Invoice", "Customer", "Salesperson", "Subtotal", "Fees", "Taxes", "Total");
+		
 		//ArrayList of Detailed Individual Invoices
 		ArrayList<String> individualInvoice = new ArrayList<String>();
+		
 		//ArrayList holds the orderd product for an invoice and is later cleared for the next invoice
 		ArrayList<String> invoiceProducts = new ArrayList<String>();
 		
-		double grandSubtotal = 0, grandFees = 0, grandTaxes = 0, grandTotal = 0;
-		
-		//Get the number of invoices from the first line in Invoices.dat as an integer
+		//Stores the number of invoices
 		int o = Integer.parseInt(invoice.nextLine());
+		
+		double grandSubtotal = 0, grandFees = 0, grandTaxes = 0, grandTotal = 0;
 		for(int i = 0; i<o; i++){
 			double subtotal =0, total = 0, endTotal = 0, fees = 0, taxes = 0;
 			int productCount = 0;
@@ -34,11 +40,6 @@ public class InvoiceParser {
 			String customerCode = tokens[1].trim();
 			String personCode = tokens[2].trim();
 			String productInfo = tokens[3].trim();
-			
-			//Get HashMaps that map to Customer, Product, and Person objects
-			HashMap<String, Customer> customer = JsonXmlParser.getCustomerCode1();
-			HashMap<String, Product> product = JsonXmlParser.getProductCode1();
-			HashMap<String, Persons> person = JsonXmlParser.getPersonCode1();
 			
 			//HashMap that maps a product to its corresponding price multiplier value
 			HashMap<String, Double> productMultiplyer = new HashMap<String, Double>();
@@ -66,36 +67,36 @@ public class InvoiceParser {
 					productMultiplyer.put(code, days);
 				}
 				for(int k = 0; k<p.length; k++){
-					Product product1 = product.get(p[k]);
+					String code = p[k];
+					Product product1 = product.get(code);
 					if(product1 != null){
-						double fee = 0, hourly = 0, ppu = 0, annual = 0;
+						double fee = 0, compFee = 0, hourly = 0, ppu = 0, annual = 0;
 						
-						//p[k] is the productCode
-						invoiceProducts.add(p[k]);
+						//code is the productCode
+						invoiceProducts.add(code);
 						
 						//Get the costs of each items respective type
-						String amounts = Product.getCosts(p[k], product);
+						String amounts = Product.getCosts(code, product);
 						String cost[] = amounts.split(",");
 						hourly = Double.parseDouble(cost[0]);
 						ppu = Double.parseDouble(cost[1]);
 						annual = Double.parseDouble(cost[2]);
 						fee = Double.parseDouble(cost[3]);
 						
-						//Add compliance fee for Government Customers
+						//Add compliance fee for Government Customers once
 						if(bool == true){
-							fee += governmentCustomer.getComplianceFee(customer, customerCode);
+							compFee += governmentCustomer.getComplianceFee(customer, customerCode);
 							bool = false;
 						}
-						
 						//Consultation fee
-						fees += Consultations.consultationFee(product, p[k]);
-						fees += fee;
+						fees += Consultations.consultationFee(product, code);
+						fees += fee+compFee;
 						//Calculate the invoice Subtotals and ending Totals
-						total = Product.getTotal(product, productMultiplyer, p[k], hourly, ppu, annual);
+						total = Product.getTotal(product, productMultiplyer, code, hourly, ppu, annual);
 						subtotal += total;
 						//Calculate tax percentage for a customer type
-						taxes += companyCustomer.taxes(customer, product, customerCode, p[k], total);
-						
+						taxes = Math.round(companyCustomer.taxes(customer, product, customerCode, code, total)*100);
+						taxes = taxes/100;
 						//Creates an individual invoice as a string and adds to an ArrayList
 						if(invoiceProducts.size() == productCount){
 							individualInvoice.add(Invoice.toString(invoiceID, customerCode, productMultiplyer, customer,
@@ -115,12 +116,12 @@ public class InvoiceParser {
 					}
 				}
 			}
-			endTotal += subtotal+fees+taxes;
+			endTotal = Math.round((subtotal+fees+taxes)*100);
+			endTotal = endTotal/100;
 			grandSubtotal += subtotal;
 			grandFees += fees;
 			grandTaxes += taxes;
 			grandTotal += endTotal;
-			
 			//Print out each Executive Summary invoice
 			if(person.get(personCode) == null){
 				System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
