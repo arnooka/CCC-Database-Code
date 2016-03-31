@@ -1,0 +1,76 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Scanner;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.thoughtworks.xstream.XStream;
+
+public class JsonXmlParser {
+	
+	//Maps personCode to person
+	private static HashMap<String, Persons> personCode1 = new HashMap<String, Persons>();
+	//customer code to customer
+	private static HashMap<String, Customer> customerCode1 = new HashMap<String, Customer>();
+	//productCode to product
+	private static HashMap<String, Product> productCode1 = new HashMap<String, Product>();
+	
+	public static void dataBaseParser{
+	
+		////////////////////////////////////////////////////////////////////////////
+		//Create elements from persons.dat and send to the person class constructor
+		
+			
+		try {
+			String query = "SELECT p.personCode AS personCode, " +
+		               "       p.lastName AS lastName, " +
+				       "       p.firstName AS firstName, " +
+				       "       a.street  AS street, " +
+				       "       a.city  AS city " +
+				       "FROM Album a JOIN Band b on a.bandId = b.bandId WHERE a.albumId = ?";
+		
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, personCode);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				//####################################################################################
+				String personCode = rs.getString("personCode");
+				String lastName = rs.getString("personFirstName");
+				String firstName = rs.getString("personLastName");
+				
+				String street = rs.getString("street");
+				String city = rs.getString("city");
+				String state = rs.getString("state");
+				String zip = rs.getString("zip");
+				String country = rs.getString("country");
+				
+				String email = rs.getString("email");
+				
+				//Generate a new instance for a person with parsed information
+				Persons person1 = new Persons(personCode, firstName, lastName,
+						new Address(street, city, state, zip, country), emailTokens);
+				//personCode maps to an instance of a person
+				personCode1.put(personCode, person1);
+				
+			}
+			xm.printf("</persons>\n");
+			js.printf("]}\n");
+			js.close();
+			xm.close();
+			
+			} else {	
+				throw new IllegalStateException("No such person information" + personCode);
+			}
+			
+			rs.close();
+			ps.close();
+			
+		}
+	
+
+		
