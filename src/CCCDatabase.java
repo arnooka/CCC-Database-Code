@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 
 /* Van Stanek, Avinash Nooka
  * CCC Database in java
@@ -8,7 +9,7 @@ import java.io.FileNotFoundException;
 
 public class CCCDatabase {
 
-	public static void main(String args[]) throws FileNotFoundException{
+	public static void main(String args[]) throws FileNotFoundException, SQLException{
 		
 		JsonXmlParser.toXMLandJSON();
 		

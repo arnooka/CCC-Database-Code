@@ -4,13 +4,13 @@ public class Persons{
 		private String firstName;
 		private String lastName;
 		private Address address;
-		private String[] emails;
+		private String emails;
 		
-		public Persons(String personCode, String firstName, String lastName, Address address, String[] emails){
+		public Persons(String personCode, String firstName, String lastName, Address address, String email){
 			this.personCode = personCode;
 			this.firstName = firstName;
 			this.lastName = lastName;
-			this.emails = emails;
+			this.emails = email;
 			this.address = address;
 		}
 
@@ -18,7 +18,7 @@ public class Persons{
 			return personCode;
 		}
 
-		public String[] getEmail() {
+		public String getEmail() {
 			return emails;
 		}
 
@@ -32,26 +32,6 @@ public class Persons{
 
 		public Address getAddress() {
 			return address;
-		}
-
-		public void setPersonCode(String personCode) {
-			this.personCode = personCode;
-		}
-
-		public void setEmail(String[] emails) {
-			this.emails = emails;
-		}
-
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
-
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
-
-		public void setAddress(Address address) {
-			this.address = address;
 		}
 
 }
