@@ -19,7 +19,6 @@ public class Invoice {
 	public static String toString(String invoiceID, String customerCode, HashMap<String, Double> productMultiplyer,
 			HashMap<String, Customer> customer, HashMap<String, Product> product, HashMap<String, Persons> person,
 			String personCode, ArrayList<String> invoiceProducts){
-		
 		double totalFee = 0, subtotal = 0, compFee = 0, taxes = 0, hourly = 0, ppu = 0, annual = 0, total = 0, fee;
 		//Stores a list of products with their fees, rates and total cost as a string
 		ArrayList<String> products = new ArrayList<String>();
@@ -50,6 +49,7 @@ public class Invoice {
 											 productMultiplyer.get(code), hourly);
 				s = String.format("%-11s %-71s $%10.2f $%10.2f\n", code, string, fee, total);
 				products.add(s);
+
 			}else if(product.get(code).getType().equals("E")){
 				total = Product.getTotal(product, productMultiplyer, code, hourly, ppu, annual);
 				subtotal += total;
@@ -93,7 +93,7 @@ public class Invoice {
 			h = h+products.get(j);
 		}
 		String i = String.format("%108s\n", "========================");
-		String j = String.format("%-83s $%10.2f $%10.2f\n", "SUB-TOTALS", totalFee, subtotal);
+		String j = String.format("%-83s $%10.2f $%10.2f\n", "SUB-TOTALS", totalFee+compFee, subtotal);
 		String k = String.format("%-95s $%10.2f\n", "COMPLIANCE FEE", compFee);
 		String l = String.format("%-95s $%10.2f\n", "TAXES", taxes/100);
 		String m = String.format("%-95s $%10.2f\n", "TOTAL", grandTotal/100);
