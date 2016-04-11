@@ -11,7 +11,7 @@ public class DatabaseConnection {
 	public static final String url = "jdbc:mysql://cse.unl.edu/anooka";
 	public static final String username = "anooka";
 	public static final String password = "Zi:LB4";
-
+	//Zi:LB4
 	public static Connection getConnection() {
 		//Establish Database COnnection
 		try {

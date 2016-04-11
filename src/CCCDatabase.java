@@ -1,5 +1,3 @@
-import java.io.FileNotFoundException;
-
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
@@ -13,7 +11,7 @@ public class CCCDatabase {
 	
 	private static org.apache.log4j.Logger log = Logger.getLogger(CCCDatabase.class);
 	
-	public static void main(String args[]) throws FileNotFoundException{
+	public static void main(String args[]){
 		
 		BasicConfigurator.configure();
 		
@@ -21,6 +19,13 @@ public class CCCDatabase {
 			DBObjectsParser.DBObjects();
 		
 			DBInvoiceParser.Invoices();
+			
+			//Removes All Persons from the Database
+			//InvoiceData.removeAllPersons();
+			
+			//Removes a Single Person from the Database
+			String personCode = "000";
+			//InvoiceData.removePerson(personCode);
 		}catch(Exception e){	
  			log.error("Something Goofed HARD...", e);
 			throw new RuntimeException(e);

@@ -32,7 +32,7 @@ public class DBObjectsParser {
 					+ "e.email AS email "
 					+ "FROM persons AS p "
 					+ "JOIN addresses AS a ON p.addressID = a.addressID " 
-					+ "JOIN emails AS e ON e.personID = p.personID";
+					+ "JOIN emails AS e ON e.personID = p.personID ORDER BY personCode ASC";
  		
  			PreparedStatement ps = null;
  			ResultSet rs = null;

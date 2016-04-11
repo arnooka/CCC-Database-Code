@@ -27,6 +27,10 @@ public class governmentCustomer extends Customer {
 	
 	public static Double getComplianceFee(HashMap<String, Customer> customer, String customerCode){
 		double compFee = 0;
+		if(customer.get(customerCode) == null){
+			System.out.println("Null key");
+			return compFee;
+		}
 		if(customer.get(customerCode).getType().equals("G")){
 			compFee = 125.00;
 		}
