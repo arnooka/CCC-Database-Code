@@ -14,9 +14,9 @@
       <zip>60611</zip>
       <country>England</country>
     </address>
-    <emails>
+    <emailTokens>
       <string>TheDoc@real.com</string>
-    </emails>
+    </emailTokens>
   </consultant>
   <pricePerHour>30.0</pricePerHour>
 </consultation>

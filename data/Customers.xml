@@ -20,10 +20,10 @@
       <zip>zipcode</zip>
       <country>United States</country>
     </address>
-    <emails>
+    <emailTokens>
       <string>TotesRealSprMn@savedaworld.com</string>
       <string>Clarkkent@whatever.com</string>
-    </emails>
+    </emailTokens>
   </primaryContact>
   <type>C</type>
 </companyCustomer>
@@ -48,9 +48,9 @@
       <zip></zip>
       <country>Mexico</country>
     </address>
-    <emails>
+    <emailTokens>
       <string>notAnikan@force.com</string>
-    </emails>
+    </emailTokens>
   </primaryContact>
   <type>G</type>
 </governmentCustomer>
@@ -75,10 +75,10 @@
       <zip>7987987</zip>
       <country>Mexico</country>
     </address>
-    <emails>
+    <emailTokens>
       <string>SteevHawks@Physics4eva.edu</string>
       <string>roboRock@nerd.com</string>
-    </emails>
+    </emailTokens>
   </primaryContact>
   <type>G</type>
 </governmentCustomer>

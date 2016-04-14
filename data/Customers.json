@@ -21,7 +21,7 @@
       "zip": "zipcode",
       "country": "United States"
     },
-    "emails": [
+    "emailTokens": [
       "TotesRealSprMn@savedaworld.com",
       "Clarkkent@whatever.com"
     ]
@@ -49,7 +49,7 @@
       "zip": "",
       "country": "Mexico"
     },
-    "emails": [
+    "emailTokens": [
       "notAnikan@force.com"
     ]
   },
@@ -76,7 +76,7 @@
       "zip": "7987987",
       "country": "Mexico"
     },
-    "emails": [
+    "emailTokens": [
       "SteevHawks@Physics4eva.edu",
       "roboRock@nerd.com"
     ]

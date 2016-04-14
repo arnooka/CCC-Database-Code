@@ -10,10 +10,10 @@
     <zip>zipcode</zip>
     <country>United States</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>TotesRealSprMn@savedaworld.com</string>
     <string>Clarkkent@whatever.com</string>
-  </emails>
+  </emailTokens>
 </person>
 <person>
   <personCode>122</personCode>
@@ -26,9 +26,9 @@
     <zip></zip>
     <country>Mexico</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>notAnikan@force.com</string>
-  </emails>
+  </emailTokens>
 </person>
 <person>
   <personCode>111</personCode>
@@ -41,9 +41,9 @@
     <zip>60611</zip>
     <country>England</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>TheDoc@real.com</string>
-  </emails>
+  </emailTokens>
 </person>
 <person>
   <personCode>222</personCode>
@@ -56,9 +56,9 @@
     <zip></zip>
     <country>Canada</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>blablabla@bla.bla</string>
-  </emails>
+  </emailTokens>
 </person>
 <person>
   <personCode>333</personCode>
@@ -71,10 +71,10 @@
     <zip>7987987</zip>
     <country>Mexico</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>SteevHawks@Physics4eva.edu</string>
     <string>roboRock@nerd.com</string>
-  </emails>
+  </emailTokens>
 </person>
 <person>
   <personCode>S001</personCode>
@@ -87,9 +87,9 @@
     <zip>78643</zip>
     <country>United States</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>llauften@Yahoo.com</string>
-  </emails>
+  </emailTokens>
 </person>
 <person>
   <personCode>S002</personCode>
@@ -102,8 +102,8 @@
     <zip>In a land down unda&apos;</zip>
     <country>Australia</country>
   </address>
-  <emails>
+  <emailTokens>
     <string>pbshiredme@pls.com</string>
-  </emails>
+  </emailTokens>
 </person>
 </persons>

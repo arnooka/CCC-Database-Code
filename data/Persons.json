@@ -11,7 +11,7 @@
     "zip": "zipcode",
     "country": "United States"
   },
-  "emails": [
+  "emailTokens": [
     "TotesRealSprMn@savedaworld.com",
     "Clarkkent@whatever.com"
   ]
@@ -27,7 +27,7 @@
     "zip": "",
     "country": "Mexico"
   },
-  "emails": [
+  "emailTokens": [
     "notAnikan@force.com"
   ]
 },
@@ -42,7 +42,7 @@
     "zip": "60611",
     "country": "England"
   },
-  "emails": [
+  "emailTokens": [
     "TheDoc@real.com"
   ]
 },
@@ -57,7 +57,7 @@
     "zip": "",
     "country": "Canada"
   },
-  "emails": [
+  "emailTokens": [
     "blablabla@bla.bla"
   ]
 },
@@ -72,7 +72,7 @@
     "zip": "7987987",
     "country": "Mexico"
   },
-  "emails": [
+  "emailTokens": [
     "SteevHawks@Physics4eva.edu",
     "roboRock@nerd.com"
   ]
@@ -88,7 +88,7 @@
     "zip": "78643",
     "country": "United States"
   },
-  "emails": [
+  "emailTokens": [
     "llauften@Yahoo.com"
   ]
 },
@@ -103,7 +103,7 @@
     "zip": "In a land down unda\u0027",
     "country": "Australia"
   },
-  "emails": [
+  "emailTokens": [
     "pbshiredme@pls.com"
   ]
 }
