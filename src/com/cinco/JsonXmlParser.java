@@ -11,12 +11,9 @@ import com.thoughtworks.xstream.XStream;
 
 public class JsonXmlParser {
 	
-	// Maps personCode to person
-	private static HashMap<String, Person> personCode1 = new HashMap<String, Person>();
-	// customer code to customer
-	private static HashMap<String, Customer> customerCode1 = new HashMap<String, Customer>();
-	// productCode to product
-	private static HashMap<String, Product> productCode1 = new HashMap<String, Product>();
+	private static HashMap<String, Person> personCode1 = new HashMap<String, Person>(); // Maps personCode to person
+	private static HashMap<String, Customer> customerCode1 = new HashMap<String, Customer>(); // customer code to customer
+	private static HashMap<String, Product> productCode1 = new HashMap<String, Product>(); // productCode to product
 	
 	public static void toXMLandJSON() throws FileNotFoundException{
 		// Open files and create JSON and XML builders
@@ -49,25 +46,25 @@ public class JsonXmlParser {
 				String personCode = tokens[0].trim();
 				String personName = tokens[1].trim();
 				
-				String Address = tokens[2].trim();
+				String Address 	  = tokens[2].trim();
 				String fullAddress[] = Address.split(",");
-				String street = fullAddress[0].trim();
-				String city = fullAddress[1].trim();
-				String state = fullAddress[2].trim();
-				String zip = fullAddress[3].trim();
-				String country = fullAddress[4].trim();
+				String street 		 = fullAddress[0].trim();
+				String city 		 = fullAddress[1].trim();
+				String state 		 = fullAddress[2].trim();
+				String zip 			 = fullAddress[3].trim();
+				String country 		 = fullAddress[4].trim();
 				
 				String emailTokens[] = null;
 				if(tokens.length == 4){
 					String email = tokens[3].trim();
-					emailTokens = email.split(",");
+					emailTokens  = email.split(",");
 				}else{
-					emailTokens = new String[0];
+					emailTokens  = new String[0];
 				}
 			
 				String fullName[] = personName.split(",");
-				String lastName = fullName[0].trim();
-				String firstName = fullName[1].trim();
+				String lastName   = fullName[0].trim();
+				String firstName  = fullName[1].trim();
 				
 				// Generate a new instance for a person with parsed information
 				Person person1 = new Person(personCode, firstName, lastName,
@@ -75,7 +72,7 @@ public class JsonXmlParser {
 				// personCode maps to an instance of a person
 				personCode1.put(personCode, person1);
 				
-				String xml = xstream.toXML(person1);
+				String xml  = xstream.toXML(person1);
 				String json = gson.toJson(person1);
 				
 				if(count < l){
@@ -111,16 +108,16 @@ public class JsonXmlParser {
 				
 				String customerCode = tokens[0].trim();
 				String customerType = tokens[1].trim();
-				String personCode = tokens[2].trim();
+				String personCode 	= tokens[2].trim();
 				String customerName = tokens[3].trim();
 				
-				String Address = tokens[4].trim();
+				String Address 		= tokens[4].trim();
 				String fullAddress[] = Address.split(",");
-				String street = fullAddress[0].trim();
-				String city = fullAddress[1].trim();
-				String state = fullAddress[2].trim();
-				String zip = fullAddress[3].trim();
-				String country = fullAddress[4].trim();
+				String street 		 = fullAddress[0].trim();
+				String city 		 = fullAddress[1].trim();
+				String state 		 = fullAddress[2].trim();
+				String zip 			 = fullAddress[3].trim();
+				String country 		 = fullAddress[4].trim();
 				
 				// Get the related person from the personCode in Customers.dat
 				Person primaryContact = (Person) personCode1.get(personCode);
@@ -133,8 +130,10 @@ public class JsonXmlParser {
 								new Address(street, city, state, zip, country), customerType);
 					// Maps a customerCode to a customer
 					customerCode1.put(customerCode, customer1);
-					String xml = xstream.toXML(customer1);
+					
+					String xml  = xstream.toXML(customer1);
 					String json = gson.toJson(customer1);
+					
 					if(count < m){
 						js.printf("	"+json+",\n");
 						count++;
@@ -149,8 +148,10 @@ public class JsonXmlParser {
 								new Address(street, city, state, zip, country), customerType);
 					// Maps a customerCode to a customers full name
 					customerCode1.put(customerCode, government1);
+					
 					String xml = xstream.toXML(government1);
 					String json = gson.toJson(government1);
+					
 					if(count < m){
 						js.printf("	"+json+",\n");
 						count++;
@@ -185,13 +186,13 @@ public class JsonXmlParser {
 				String tokens[] = line.split(";");
 				
 				String productCode = tokens[0].trim();
-				String type = tokens[1].trim();
+				String type 	   = tokens[1].trim();
 				String productName = tokens[2].trim();
 				
 				// Statement that determins the type of product
 				if(type.equals("C")){ //Consultantion
 					String consultationCode = tokens[3].trim();
-					Double hourlyRate = Double.parseDouble(tokens[4]);
+					Double hourlyRate 		= Double.parseDouble(tokens[4]);
 					// Get an instance of a person throught the consultCode
 					Person a = (Person) personCode1.get(consultationCode);
 					// Generate an instance of a consultation
@@ -200,8 +201,10 @@ public class JsonXmlParser {
 					// Map the required items for invoice to the Consultation product code
 					productCode1.put(productCode, consultation1);
 					xstream.alias("consultation", Consultations.class);
-					String xml = xstream.toXML(consultation1);
+					
+					String xml  = xstream.toXML(consultation1);
 					String json = gson.toJson(consultation1);
+					
 					if(count < n){
 						js.printf("	"+json+",\n");
 						count++;
@@ -211,15 +214,17 @@ public class JsonXmlParser {
 					xm.printf(xml+"\n");
 					
 				}else if(type.equals("E")){ //Equipment
-					Double pricePerUnit = Double.parseDouble(tokens[3]);
+					Double pricePerUnit  = Double.parseDouble(tokens[3]);
 					// Generate an instance of an equipment
 					Equipment equipment1 = new Equipment(productCode, productName, pricePerUnit, type);
 					
 					// Map the required items for invoice to the Equipment product code
 					productCode1.put(productCode, equipment1);
 					xstream.alias("equipment", Equipment.class);
-					String xml = xstream.toXML(equipment1);
+					
+					String xml  = xstream.toXML(equipment1);
 					String json = gson.toJson(equipment1);
+					
 					if(count < n){
 						js.printf("	"+json+",\n");
 						count++;
@@ -229,7 +234,7 @@ public class JsonXmlParser {
 					xm.printf(xml+"\n");
 				
 				}else if(type.equals("L")){ //License
-					Double fee = Double.parseDouble(tokens[3]);
+					Double fee 		 = Double.parseDouble(tokens[3]);
 					Double annualFee = Double.parseDouble(tokens[4]);
 					
 					xstream.alias("license", License.class);
@@ -238,8 +243,10 @@ public class JsonXmlParser {
 					
 					// Map the required items for invoice to the Equipment product code
 					productCode1.put(productCode, license1);
-					String xml = xstream.toXML(license1);
+					
+					String xml  = xstream.toXML(license1);
 					String json = gson.toJson(license1);
+					
 					if(count < n){
 						js.printf("	"+json+",\n");
 						count++;

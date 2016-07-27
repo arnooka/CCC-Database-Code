@@ -1,5 +1,7 @@
 package com.cinco;
 
+import com.cinco.Comparator.CompareInterface;
+
 public class InvoiceList<T> {
 
 	private InvoiceListNode<T> head = null;
@@ -34,16 +36,17 @@ public class InvoiceList<T> {
     	if (head == null){
     		head = input;
     	}else{
-    		while (temp.getNext() != null){
+    		while(temp.getNext() != null){
     			temp = temp.getNext();
     		}
     		temp.setNext(input);
     	}
+    	size++;
     }
     
-    // Add a node to a certain 
+    // Add a node to a certain position
     public void add(InvoiceListNode<T> input, int index){
-    	if(head == null || index == 1 || index < 0){
+    	if(head == null || index <= 1){
     		// Checks if node needs to be the new head
     		addToStart(input);
     	}else if(index == size()+1){
@@ -73,14 +76,22 @@ public class InvoiceList<T> {
     }
     
     // Remove a node at a certain position
-    public void remove(int position) {
+    public void remove(int index) {
+    	// Index value check
+    	if(index < 1){
+    		System.out.println("Remove error: list indexing starts at 1");
+    		System.exit(1);
+    	}else if(index >= size()+1){
+    		System.out.println("Remove error: index entered is greater than list size");
+    		System.exit(1);
+    	}
+    	
     	InvoiceListNode<T> current = head;
-    	if (position == 0){
+    	if (index == 1){
     		head = current.getNext();  
     		return;
     	}
-
-    	for (int i=0; current !=null && i<position-1; i++){
+    	for (int i=0; current !=null && i<index-1; i++){
     		current = current.getNext();  
     		if (current == null || current.getNext() == null){
     			return;
@@ -91,11 +102,39 @@ public class InvoiceList<T> {
     	size--;
     }
     
+    // Finds the place where the new node needs to be added
+    public static int Index(InvoiceListNode<?> head, InvoiceListNode<?> input, CompareInterface comparator){
+ 		int index = 1;
+ 		InvoiceListNode<?> current = head;
+ 		if(current == null){
+ 			return index;
+ 		}
+ 		while(current.getNext() != null){
+ 			if(comparator.compare(current, input) > 0){
+ 				current = current.getNext();
+ 				index++;
+ 			}else if(comparator.compare(current, input) <= 0){
+ 				return index;
+ 			}
+ 		}
+ 		// Checks the last node is reached and 
+ 		// compares it to the input
+ 		if(current.getNext() == null){
+ 			if(comparator.compare(current, input) <= 0){
+ 				return index;
+ 			}else{
+ 				index++;
+ 			}
+ 		}
+ 		return index;
+ 	}
+    
     // Get the size of the linked list
   	public static int size() { 
       	return size;
   	}
   	
+  	// Checks if the linked list is empty
   	public boolean isEmpty(){
   		return size == 0;
   	}
@@ -163,6 +202,7 @@ public class InvoiceList<T> {
 		return output;
 	}
 	
+	// Get the head node in the linked list
 	public InvoiceListNode<T> getHead(){
 		return head;
 	}

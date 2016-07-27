@@ -2,7 +2,6 @@ package com.cinco;
 
 public class Equipment extends Product {
 
-	
 	private Double pricePerUnit;
 	private Double numUnits;
 	
@@ -15,17 +14,9 @@ public class Equipment extends Product {
 	public Double getPricePerUnit() {
 		return pricePerUnit;
 	}
-
-	public void setPricePerUnit(Double pricePerUnit) {
-		this.pricePerUnit = pricePerUnit;
-	}
+	
 	public Double getNumUnits() {
 		return numUnits;
 	}
-	public void setNumUnits(Double numUnits) {
-		this.numUnits = numUnits;
-	}
 	
-	
-
 }

@@ -108,13 +108,13 @@ public class InvoiceParser {
 							individualInvoice.add(Invoice.toString(invoiceID, customerCode, productMultiplyer, cus,
 									products, person, invoiceProducts));
 							// Check for if the sales person exists
-//							if(person == null){
-//								@SuppressWarnings("unused")
-//								Invoice invoice1 = new Invoice(invoiceID, cus, person, invoiceProducts, endTotal);
-//							}else{
-//								@SuppressWarnings("unused")
-//								Invoice invoice1 = new Invoice(invoiceID, cus, person, invoiceProducts, endTotal);
-//							}
+							if(person == null){
+								@SuppressWarnings("unused")
+								Invoice invoice1 = new Invoice(invoiceID, cus, null, invoiceProducts);
+							}else{
+								@SuppressWarnings("unused")
+								Invoice invoice1 = new Invoice(invoiceID, cus, person, invoiceProducts);
+							}
 						}
 					}
 				}
@@ -147,4 +147,5 @@ public class InvoiceParser {
 		}
 		invoice.close();
 	}
+	
 }

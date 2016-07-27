@@ -133,8 +133,8 @@ public class Invoice {
 		return invoice;
 	}
 
-	public String getInvoiceCode() {
-		return invoiceCode;
+	public ArrayList<String> getInvoiceProducts() {
+		return invoiceProducts;
 	}
 	
 	public Customer getCustomer() {
@@ -144,9 +144,9 @@ public class Invoice {
 	public Person getSalesPerson() {
 		return salesPerson;
 	}
-
-	public ArrayList<String> getInvoiceProducts() {
-		return invoiceProducts;
+	
+	public String getInvoiceCode() {
+		return invoiceCode;
 	}
 	
 	public double getSubTotal(){

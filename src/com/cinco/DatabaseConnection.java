@@ -9,9 +9,9 @@ public class DatabaseConnection {
 	
 	private static org.apache.log4j.Logger log = Logger.getLogger(DatabaseConnection.class);
 	
-	public static final String url = "jdbc:mysql://cse.unl.edu/anooka";
-	public static final String username = "anooka";
-	public static final String password = "Zi:LB4";
+	private static final String url = "jdbc:mysql://cse.unl.edu/anooka";
+	private static final String username = "anooka";
+	private static final String password = "Zi:LB4";
 	// Password for reference: Zi:LB4
 	public static Connection getConnection() {
 		// Establish Database Connection

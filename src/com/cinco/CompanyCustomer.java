@@ -39,8 +39,7 @@ public class CompanyCustomer extends Customer {
 				taxes += total*0.07;
 			}
 		}
-		
-		
 		return taxes;
 	}
+	
 }

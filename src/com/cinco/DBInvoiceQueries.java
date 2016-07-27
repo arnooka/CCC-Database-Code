@@ -18,10 +18,13 @@ public class DBInvoiceQueries {
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// NOT NEEDED FOR ASSIGNMENT 7
-		//Print precursor information for executive invoices
-		System.out.printf("Executive Summary Report\n=========================\n");
-		System.out.printf("%-9s %-49s %-32s %-15s %-10s %-11s %s\n", 
-						  "Invoice", "Customer", "Salesperson", "Subtotal", "Fees", "Taxes", "Total");
+		boolean querySwitch = CCCDatabase.getQuerySwitch();
+		if(querySwitch){
+			//Print precursor information for executive invoices
+			System.out.printf("Executive Summary Report\n=========================\n");
+			System.out.printf("%-9s %-49s %-32s %-15s %-10s %-11s %s\n", 
+							  "Invoice", "Customer", "Salesperson", "Subtotal", "Fees", "Taxes", "Total");
+		}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		// Establish Database Connection
@@ -181,19 +184,19 @@ public class DBInvoiceQueries {
 							products, salesPerson, invoiceProducts));
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			// NOT NEEDED FOR ASSIGNMENT 7
-					// Print out each Executive Summary invoice
-					if(salesPerson == null){
-						System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
-								invoiceCode, customer.getName(), "null",
-								subTotal, totalFee+compFee, totalTax, endTotal);
-					}else{
-						System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
-								invoiceCode, customer.getName(), salesPerson.getLastName()+", "+
-								salesPerson.getFirstName(), subTotal, totalFee+compFee, totalTax, endTotal);
+					if(querySwitch){
+						// Print out each Executive Summary invoice
+						if(salesPerson == null){
+							System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
+									invoiceCode, customer.getName(), "null",
+									subTotal, totalFee+compFee, totalTax, endTotal);
+						}else{
+							System.out.printf("%-9s %-49s %-29s $%10.2f $%10.2f $%10.2f $%10.2f\n",
+									invoiceCode, customer.getName(), salesPerson.getLastName()+", "+
+									salesPerson.getFirstName(), subTotal, totalFee+compFee, totalTax, endTotal);
+						}
 					}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					
-					
 					// Reset to store new products for new invoice
 					invoiceProducts.clear();
 					// Reset values
@@ -204,17 +207,19 @@ public class DBInvoiceQueries {
 			}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  		// NOT NEEDED FOR ASSIGNMENT 7
- 			// Print the remaining details for the Executive Report
- 			System.out.println("===================================================================="
- 					 + "=====================================================================");
- 			System.out.printf("%-89s $%10.2f $%10.2f $%10.2f $%10.2f\n\n\n\n\n", 
- 							  "TOTALS", grandSubtotal, grandFees, grandTaxes, grandTotal);
- 			
- 			System.out.printf("Individual Invoice Detail Reports\n==================================================\n");
- 			
- 			// Print the Detailed Invoice Report
- 			for(int i = 0; i<individualInvoice.size(); i++){
- 				System.out.println(individualInvoice.get(i));
+ 			if(querySwitch){
+ 	 			// Print the remaining details for the Executive Report
+ 	 			System.out.println("===================================================================="
+ 	 					 + "=====================================================================");
+ 	 			System.out.printf("%-89s $%10.2f $%10.2f $%10.2f $%10.2f\n\n\n\n\n", 
+ 	 							  "TOTALS", grandSubtotal, grandFees, grandTaxes, grandTotal);
+ 	 			
+ 	 			System.out.printf("Individual Invoice Detail Reports\n==================================================\n");
+ 	 			
+ 	 			// Print the Detailed Invoice Report
+ 	 			for(int i = 0; i<individualInvoice.size(); i++){
+ 	 				System.out.println(individualInvoice.get(i));
+ 	 			}
  			}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  			ps.close();

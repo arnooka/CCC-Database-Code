@@ -10,7 +10,7 @@ public class Comparator {
 	}
 	
 	// Compares the current node's customer name to the input node's customer name
-	public static class CompareByName implements CompareInterface{
+	public static class CompareByName implements CompareInterface {
 
 		@Override
 		public int compare(InvoiceListNode<?> current, InvoiceListNode<?> input) {
@@ -27,7 +27,7 @@ public class Comparator {
 	}
 	
 	// Compares the current node's total to the input node's total
-	public static class CompareByTotal implements CompareInterface{
+	public static class CompareByTotal implements CompareInterface {
 
 		@Override
 		public int compare(InvoiceListNode<?> current, InvoiceListNode<?> input) {
@@ -36,7 +36,7 @@ public class Comparator {
 			}else if(current.getInvoice().getEndTotal() > input.getInvoice().getEndTotal()){
 				return 1;
 			}else{
-				return 0;
+				return 1;
 			}
 		}
 		
@@ -44,7 +44,7 @@ public class Comparator {
 	
 	// Compares the current node's type to the input node's type
 	// Compares by sales person otherwise if type is the same
-	public static class CompareTypeToName implements CompareInterface{
+	public static class CompareTypeToName implements CompareInterface {
 
 		@Override
 		public int compare(InvoiceListNode<?> current, InvoiceListNode<?> input) {

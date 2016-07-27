@@ -15,61 +15,88 @@ public class CCCDatabase {
 	
 	private static org.apache.log4j.Logger log = Logger.getLogger(CCCDatabase.class);
 	
+	// Switches for printing various information
+	private static boolean parserSwitch = false;
+	private static boolean querySwitch = false;
+	private static boolean listSwitch = true;
+	
 	public static <T> void main(String args[]) throws FileNotFoundException{
 		
+		// Switch check
+		if(!parserSwitch && !querySwitch && !listSwitch){
+			System.out.println("Check switches to print information!");
+			System.exit(1);
+		}
+		
 		// Old methods which output invoice data from .dat files
-		//JsonXmlParser.toXMLandJSON();
-		//InvoiceParser.Invoices();
+		if(parserSwitch){
+			System.out.println("\nParsing through \".dat\" files\n");
+			JsonXmlParser.toXMLandJSON();
+			InvoiceParser.Invoices();
+		}
 		
 		BasicConfigurator.configure();
 		try{
-			//Querys and Outputs Invoice Information
-			DBObjectQueries.DBObjects();
-			DBInvoiceQueries.Invoices();
-			
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Anything between is for assignment 7
-			// Gets All Queried Invoice Objects in a List
-			ArrayList<Invoice> invoices = DBInvoiceQueries.getInvoiceArrayList();
-			// Create new Invoice Linked List
-			InvoiceList<T> il = new InvoiceList<T>();
-			
-			// Sorted by Customer Sales Person Name
-			System.out.println("\n\n\n\nSORTED BY CUSTOMER NAME");
-			for(int i = 0; i<invoices.size(); i++){
-				InvoiceListNode<T> input = new InvoiceListNode<T>(invoices.get(i));
-				
-				int index = FindIndex.Index(il.getHead(), input, new Comparator.CompareByName());
-				il.add(input, index);
+			if(querySwitch){
+				System.out.println("\nQuerying database\n");
+				//Querys and Outputs Invoice Information
+				DBObjectQueries.DBObjects();
+				DBInvoiceQueries.Invoices();
 			}
-			il.toString();
-			il.clear();
 			
-			// Sorted By Invoice Total Amount
-			System.out.println("\nSORTED BY INVOICE TOTAL");
-			for(int i = 0; i<invoices.size(); i++){
-				InvoiceListNode<T> input = new InvoiceListNode<T>(invoices.get(i));
+			// Anything after this is for phase 6
+			if(listSwitch){
+				DBObjectQueries.DBObjects();
+				DBInvoiceQueries.Invoices();
 				
-				int index = FindIndex.Index(il.getHead(), input, new Comparator.CompareByTotal());
-				il.add(input, index);
+				System.out.println("\nLinked List Sorting");
+				// Gets All Queried Invoice Objects in a List
+				ArrayList<Invoice> invoices = DBInvoiceQueries.getInvoiceArrayList();
+				// Create new Invoice Linked List
+				InvoiceList<T> il = new InvoiceList<T>();
+				
+				// Sorted by Customer Sales Person Name
+				System.out.println("\nSORTED BY CUSTOMER NAME");
+				for(int i = 0; i<invoices.size(); i++){
+					InvoiceListNode<T> input = new InvoiceListNode<T>(invoices.get(i));
+					
+					int index = InvoiceList.Index(il.getHead(), input, new Comparator.CompareByName());
+					il.add(input, index);
+				}
+				il.toString();
+				il.clear();
+				
+				// Sorted By Invoice Total Amount
+				System.out.println("\nSORTED BY INVOICE TOTAL");
+				for(int i = 0; i<invoices.size(); i++){
+					InvoiceListNode<T> input = new InvoiceListNode<T>(invoices.get(i));
+					
+					int index = InvoiceList.Index(il.getHead(), input, new Comparator.CompareByTotal());
+					il.add(input, index);
+				}
+				il.toString();
+				il.clear();
+				
+				// Sort By Customer Type then SalesPerson
+				System.out.println("\nSORTED BY CUSTOMER TYPE - SALESPERSON");
+				for(int i = 0; i<invoices.size(); i++){
+					InvoiceListNode<T> input = new InvoiceListNode<T>(invoices.get(i));
+					
+					int index = InvoiceList.Index(il.getHead(), input, new Comparator.CompareTypeToName());
+					il.add(input, index);
+				}
+				il.toString();
+				il.clear();
 			}
-			il.toString();
-			il.clear();
 			
-			// Sort By Customer Type then SalesPerson
-			System.out.println("\nSORTED BY CUSTOMER TYPE - SALESPERSON");
-			for(int i = 0; i<invoices.size(); i++){
-				InvoiceListNode<T> input = new InvoiceListNode<T>(invoices.get(i));
-				
-				int index = FindIndex.Index(il.getHead(), input, new Comparator.CompareTypeToName());
-				il.add(input, index);
-			}
-			il.toString();
-			il.clear();
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}catch(Exception e){	
  			log.error("Something Goofed HARD...", e);
 			throw new RuntimeException(e);
 	 	}
 	}
+
+	public static boolean getQuerySwitch() {
+		return querySwitch;
+	}
+	
 }
